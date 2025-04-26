@@ -6,7 +6,7 @@ Steps:
 </ul>
 
 <br>You can login to my account: 
-<br>Email: rafael.anderson@binus.ac.id
+<br>Email: Rafael.anderson@binus.ac.id
 <br>Password: 2702255981
 
 <br>Be sure to have wifi connected so it can access the firestore.
