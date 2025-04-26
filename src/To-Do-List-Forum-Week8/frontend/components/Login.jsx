@@ -7,8 +7,9 @@ export const Login = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { user, setUser, userSuddenlyLoggedOut, setUserSuddenlyLoggedOut } = useContext(UserContext); 
+    const { user, setUser, userSuddenlyLoggedOut, setUserSuddenlyLoggedOut, VITE_BACKEND_URL } = useContext(UserContext); 
 
+    console.log(VITE_BACKEND_URL);
     useEffect(() => {
         if (user){
             navigate("/todo");
@@ -30,7 +31,7 @@ export const Login = () => {
 
     const login = async() => {
         try{
-            const response = await fetch("http://localhost:4000/api/user/login", {
+            const response = await fetch(`${VITE_BACKEND_URL}/api/user/login`, {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({

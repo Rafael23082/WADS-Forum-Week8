@@ -7,11 +7,10 @@ import { UserContext } from "./UserContext";
 export const TaskContainer = ({ showingCompleted, tasks, setTasks }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [updatedTask, setUpdatedTask] = useState(null);
-    const {user} = useContext(UserContext);
-    console.log("Wrapper: ", tasks);
+    const {user, VITE_BACKEND_URL} = useContext(UserContext);
 
     const changeStatus = async(TaskId, IsCompleted) => {
-        const response = await fetch(`http://localhost:4000/api/task/updateTask/${TaskId}`, {
+        const response = await fetch(`${VITE_BACKEND_URL}/api/task/updateTask/${TaskId}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -20,7 +19,7 @@ export const TaskContainer = ({ showingCompleted, tasks, setTasks }) => {
         });
 
         if(response.ok){
-            fetch(`http://localhost:4000/api/task/getUserTasks/${user._id}`)
+            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user._id}`)
             .then((response) => response.json())
             .then((data) => {
                 setTasks(data);
@@ -29,13 +28,13 @@ export const TaskContainer = ({ showingCompleted, tasks, setTasks }) => {
     }
 
     const deleteTask = async(TaskId) => {
-        const response = await fetch(`http://localhost:4000/api/task/deleteTask/${TaskId}`, {
+        const response = await fetch(`${VITE_BACKEND_URL}/api/task/deleteTask/${TaskId}`, {
             method: "DELETE",
             headers: {"Content-Type": "application/json"}
         })
 
         if (response.ok){
-            fetch(`http://localhost:4000/api/task/getUserTasks/${user._id}`)
+            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user._id}`)
             .then((response) => response.json())
             .then((data) => {
                 setTasks(data);

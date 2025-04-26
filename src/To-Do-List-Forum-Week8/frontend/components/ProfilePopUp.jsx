@@ -10,6 +10,7 @@ export const ProfilePopUp = ({ isOpen, setIsOpen }) => {
     const [email, setEmail] = useState(user.Email);
     const [password, setPassword] = useState(user.Password);
     const navigate = useNavigate();
+    const {VITE_BACKEND_URL} = useContext(UserContext);
 
     const isValidEmail = (email) => {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -23,7 +24,7 @@ export const ProfilePopUp = ({ isOpen, setIsOpen }) => {
                 return toast.error("Invalid Email Format");
             }
 
-            const response = await fetch(`http://localhost:4000/api/user/updateUser/${user._id}`, {
+            const response = await fetch(`${VITE_BACKEND_URL}/api/user/updateUser/${user._id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -33,7 +34,7 @@ export const ProfilePopUp = ({ isOpen, setIsOpen }) => {
             });
             const data = await response.json();
             if (response.ok) {
-                const response2 = await fetch(`http://localhost:4000/api/user/getUserInfo/${user._id}`);
+                const response2 = await fetch(`${VITE_BACKEND_URL}/api/user/getUserInfo/${user._id}`);
                 const data2 = await response2.json();
                 setUser(data2);
                 toast.success("User Details Changed!");

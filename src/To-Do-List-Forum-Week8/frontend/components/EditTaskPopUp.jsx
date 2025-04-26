@@ -4,10 +4,10 @@ import { toast } from "react-toastify";
 
 export const EditTaskPopUp = ({ isOpen, updatingTask, setIsOpen, setTasks }) => {
     const [updatedTaskText, setUpdatedTaskText] = useState(updatingTask.TaskName);
-    const {user} = useContext(UserContext);
+    const {user, VITE_BACKEND_URL} = useContext(UserContext);
 
     const updateTask = async () => {
-        const response = await fetch(`http://localhost:4000/api/task/updateTask/${updatingTask._id}`, {
+        const response = await fetch(`${VITE_BACKEND_URL}/api/task/updateTask/${updatingTask._id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -16,7 +16,7 @@ export const EditTaskPopUp = ({ isOpen, updatingTask, setIsOpen, setTasks }) => 
         })
 
         if (response.ok){
-            fetch(`http://localhost:4000/api/task/getUserTasks/${user._id}`)
+            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user._id}`)
             .then((response) => response.json())
             .then((data) => {
                 setTasks(data);

@@ -1,12 +1,14 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { UserContext } from "./UserContext";
 
 export const SignUp = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const {VITE_BACKEND_URL} = useContext(UserContext);
 
     const updateText = (value, type) => {
         if (type === "name"){
@@ -27,7 +29,7 @@ export const SignUp = () => {
             return toast.error("Email Invalid")
         }
 
-        const response = await fetch("http://localhost:4000/api/user", {
+        const response = await fetch(`${VITE_BACKEND_URL}/api/user`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -41,6 +43,9 @@ export const SignUp = () => {
         if (!response.ok){
             toast.error(data.message);
         } else {
+            setName("");
+            setEmail("");
+            setPassword("");
             toast.success("User Created!");
         }
     };

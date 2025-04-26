@@ -13,7 +13,7 @@ export const ToDoWrapper = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [tasks, setTasks] = useState([]);
-    const {user, setUser, setUserSuddenlyLoggedOut, loggedOut, setLoggedOut} = useContext(UserContext);
+    const {user, setUser, setUserSuddenlyLoggedOut, loggedOut, setLoggedOut, VITE_BACKEND_URL} = useContext(UserContext);
 
     useEffect(() => {
         if (!user && !loggedOut){
@@ -27,7 +27,7 @@ export const ToDoWrapper = () => {
             return;
         }
 
-        fetch(`http://localhost:4000/api/task/getUserTasks/${user._id}`)
+        fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user._id}`)
         .then((response) => response.json())
         .then((data) => {
             setTasks(data);
@@ -35,7 +35,7 @@ export const ToDoWrapper = () => {
     }, [user])
 
     const addTask = async() => {
-        const response = await fetch(`http://localhost:4000/api/task`, {
+        const response = await fetch(`${VITE_BACKEND_URL}/api/task`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -45,7 +45,7 @@ export const ToDoWrapper = () => {
         })
         if (response.ok){
             setTask("");
-            fetch(`http://localhost:4000/api/task/getUserTasks/${user._id}`)
+            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user._id}`)
             .then((response) => response.json())
             .then((data) => {
                 setTasks(data);
