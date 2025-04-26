@@ -14,7 +14,7 @@ Steps:
 </ul>
 
 .env (Root folder) sample:
-<img src="Env-1.png">
+<img src="public/Env-1.png">
 
 .env (Backend folder) sample:
-<img src="Env-2.png">
+<img src="public/Env-2.png">
