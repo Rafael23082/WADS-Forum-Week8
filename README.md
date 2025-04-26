@@ -3,7 +3,7 @@ Steps:
 <ul>
   <li>Clone the github repository</li>
   <li>Open Folder</li>
-  <li>npm install # On root folder<li>
+  <li>npm install # On root folder</li>
   <li>cd src/To-Do-List-Week8/backend</li>
   <li>npm install # On backend folder</li>
   <li>Add a .env file on the root folder containing: VITE_BACKEND_URL="http://localhost:4000" (The port is changed to which port your backend is running at) [Root Folder]</li>
