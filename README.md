@@ -12,3 +12,9 @@ Steps:
   <li>|| PORT = 4000 (Change to any port you want to run the backend at) [Backend Folder]</li>
   <li>Run "npm run dev" on the root folder and "npm run server" on the backend folder</li>
 </ul>
+
+.env (Root folder) sample:
+<img src="Env-1.png">
+
+.env (Backend folder) sample:
+<img src="Env-2.png">
