@@ -1,6 +1,6 @@
 Steps:
 
-<ul>
+<ol>
   <li>Clone the github repository</li>
   <li>Open Folder</li>
   <li>npm install **Note:** On root folder</li>
