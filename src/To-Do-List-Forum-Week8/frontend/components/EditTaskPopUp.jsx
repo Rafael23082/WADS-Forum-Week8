@@ -3,20 +3,20 @@ import { UserContext } from "./UserContext";
 import { toast } from "react-toastify";
 
 export const EditTaskPopUp = ({ isOpen, updatingTask, setIsOpen, setTasks }) => {
-    const [updatedTaskText, setUpdatedTaskText] = useState(updatingTask.TaskName);
+    const [updatedTaskText, setUpdatedTaskText] = useState(updatingTask.taskName);
     const {user, VITE_BACKEND_URL} = useContext(UserContext);
 
     const updateTask = async () => {
-        const response = await fetch(`${VITE_BACKEND_URL}/api/task/updateTask/${updatingTask._id}`, {
+        const response = await fetch(`${VITE_BACKEND_URL}/api/task/updateTask/${updatingTask.id}`, {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
-                TaskName: updatedTaskText
+                taskName: updatedTaskText
             })
         })
 
         if (response.ok){
-            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user._id}`)
+            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user.id}`)
             .then((response) => response.json())
             .then((data) => {
                 setTasks(data);

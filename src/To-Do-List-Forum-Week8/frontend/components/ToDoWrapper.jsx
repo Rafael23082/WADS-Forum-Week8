@@ -27,7 +27,7 @@ export const ToDoWrapper = () => {
             return;
         }
 
-        fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user._id}`)
+        fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user.id}`)
         .then((response) => response.json())
         .then((data) => {
             setTasks(data);
@@ -39,13 +39,13 @@ export const ToDoWrapper = () => {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
-                TaskName: task,
-                UserId: user._id
+                taskName: task,
+                userId: user.id
             })
         })
         if (response.ok){
             setTask("");
-            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user._id}`)
+            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user.id}`)
             .then((response) => response.json())
             .then((data) => {
                 setTasks(data);

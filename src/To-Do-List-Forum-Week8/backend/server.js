@@ -1,17 +1,15 @@
-import express from "express";
-import connectDB from "./configuration.js";
-import TaskRouter from "./router/TaskRouter.js";
-import UserRouter from "./router/UserRouter.js";
-import cors from "cors";
-import dotenv from "dotenv";
-import swaggerSpec from './swagger.js';
-import swaggerUi from 'swagger-ui-express';
+const express = require("express");
+const TaskRouter = require("./router/TaskRouter.js");
+const UserRouter = require("./router/UserRouter.js");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const swaggerSpec = require("./swagger.js");
+const swaggerUi = require("swagger-ui-express");
+const db = require("./models");
 
 dotenv.config();
 const app = express();
-
-connectDB()
-.then(console.log("Database Connected!"))
+const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 
@@ -20,6 +18,9 @@ app.use("/api/task", TaskRouter);
 app.use("/api/user", UserRouter);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-app.listen(process.env.PORT, () => {
-    console.log(`Server is running on port ${process.env.PORT}`);
+db.sequelize.sync()
+.then((req) => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port ${PORT}`);
+    })
 })

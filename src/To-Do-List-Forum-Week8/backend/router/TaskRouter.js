@@ -1,5 +1,5 @@
-import TaskController from "../controller/TaskController.js";
-import express from "express";
+const express = require("express");
+const TaskController = require("../controller/TaskController.js");
 
 const TaskRouter = express.Router();
 
@@ -30,9 +30,9 @@ TaskRouter.post("/", TaskController.createTask);
  *                  schema:
  *                      type: object
  *                      properties:
- *                          TaskName:
+ *                          taskName:
  *                              Type: string
- *                          UserId:
+ *                          userId:
  *                              type: string
  *      responses:
  *          200:
@@ -41,16 +41,16 @@ TaskRouter.post("/", TaskController.createTask);
  *              description: Task already exists, or an error occured.
  */
 
-TaskRouter.get("/getUserTasks/:UserId", TaskController.getUserTasks);
+TaskRouter.get("/getUserTasks/:userId", TaskController.getUserTasks);
 
 /**
  * @swagger
- * /api/task/getUserTasks/{UserId}:
+ * /api/task/getUserTasks/{userId}:
  *   get:
  *     summary: Get the tasks of a user, given the user ID.
  *     parameters:
  *      - in: path
- *        name: UserId
+ *        name: userId
  *        required: true
  *        schema:
  *          type: string
@@ -62,16 +62,16 @@ TaskRouter.get("/getUserTasks/:UserId", TaskController.getUserTasks);
  */
 
 
-TaskRouter.put("/updateTask/:TaskId", TaskController.editTask);
+TaskRouter.put("/updateTask/:taskId", TaskController.editTask);
 
 /**
  * @swagger
- * /api/task/updateTask/{TaskId}:
+ * /api/task/updateTask/{taskId}:
  *   put:
  *     summary: Updates the content of a task.
  *     parameters:
  *       - in: path
- *         name: TaskId
+ *         name: taskId
  *         required: true
  *         schema:
  *           type: string
@@ -82,9 +82,9 @@ TaskRouter.put("/updateTask/:TaskId", TaskController.editTask);
  *           schema: 
  *             type: object
  *             properties:
- *               TaskName:
+ *               taskName:
  *                 type: string
- *               IsCompleted:
+ *               isCompleted:
  *                 type: boolean
  *     responses:
  *       200:
@@ -93,16 +93,16 @@ TaskRouter.put("/updateTask/:TaskId", TaskController.editTask);
  *         description: An error occured.
  */
 
-TaskRouter.delete("/deleteTask/:TaskId", TaskController.deleteTask);
+TaskRouter.delete("/deleteTask/:taskId", TaskController.deleteTask);
 
 /**
  * @swagger
- * /api/task/deleteTask/{TaskId}:
+ * /api/task/deleteTask/{taskId}:
  *   delete:
  *     summary: To delete a task, given its id.
  *     parameters:
  *       - in: path
- *         name: TaskId
+ *         name: taskId
  *         required: true
  *         schema:
  *           type: string
@@ -113,4 +113,4 @@ TaskRouter.delete("/deleteTask/:TaskId", TaskController.deleteTask);
  *         description: An error occured.
  */
 
-export default TaskRouter;
+module.exports = TaskRouter;

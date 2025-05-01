@@ -14,12 +14,12 @@ export const TaskContainer = ({ showingCompleted, tasks, setTasks }) => {
             method: "PUT",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
-                IsCompleted: !IsCompleted
+                isCompleted: !IsCompleted
             })
         });
 
         if(response.ok){
-            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user._id}`)
+            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user.id}`)
             .then((response) => response.json())
             .then((data) => {
                 setTasks(data);
@@ -34,7 +34,7 @@ export const TaskContainer = ({ showingCompleted, tasks, setTasks }) => {
         })
 
         if (response.ok){
-            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user._id}`)
+            fetch(`${VITE_BACKEND_URL}/api/task/getUserTasks/${user.id}`)
             .then((response) => response.json())
             .then((data) => {
                 setTasks(data);
@@ -46,19 +46,19 @@ export const TaskContainer = ({ showingCompleted, tasks, setTasks }) => {
         <>
             <div className="flex flex-col gap-[20px]">
                 {tasks
-                    .filter((task) => task.IsCompleted === showingCompleted)
+                    .filter((task) => task.isCompleted === showingCompleted)
                     .map((task) => (
-                        <div key={task._id} className="bg-[#393E46] p-[1em] rounded-[10px]">
+                        <div key={task.id} className="bg-[#393E46] p-[1em] rounded-[10px]">
                             <div className="flex gap-[10px]">
-                                <input type="checkbox" className="cursor-pointer" onChange={() => changeStatus(task._id, task.IsCompleted)} checked={task.IsCompleted}/>
-                                <p className="text-lg">{task.TaskName}</p>
+                                <input type="checkbox" className="cursor-pointer" onChange={() => changeStatus(task.id, task.isCompleted)} checked={task.isCompleted}/>
+                                <p className="text-lg">{task.taskName}</p>
                             </div>
                             <div className="flex gap-[20px] mt-[0.5em]">
                                 <FontAwesomeIcon icon={faEdit} className="cursor-pointer text-blue-300 hover:text-blue-500 duration-300" onClick={() => {
                                         setIsOpen(true);
                                         setUpdatedTask(task);
                                     }}/>
-                                <FontAwesomeIcon className="cursor-pointer text-red-500 hover:text-red-700 duration-300" icon={faTrash} onClick={() => deleteTask(task._id)} />
+                                <FontAwesomeIcon className="cursor-pointer text-red-500 hover:text-red-700 duration-300" icon={faTrash} onClick={() => deleteTask(task.id)} />
                             </div>
                         </div>
                     ))}

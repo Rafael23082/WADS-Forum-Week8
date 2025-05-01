@@ -1,18 +1,18 @@
-import express from "express";
-import UserController from "../controller/UserController.js";
+const express = require("express");
+const UserController = require("../controller/UserController.js")
 
 const UserRouter = express.Router();
 
-UserRouter.get("/getUserInfo/:UserId", UserController.getUserInfo);
+UserRouter.get("/getUserInfo/:userId", UserController.getUserInfo);
 
 /**
  * @swagger
- * /api/user/getUserInfo/{UserId}:
+ * /api/user/getUserInfo/{userId}:
  *   get:
  *     description: Get user details given the Id.
  *     parameters:
  *       - in: path
- *         name: UserId
+ *         name: userId
  *         required: true
  *         schema:
  *           type: string
@@ -39,11 +39,11 @@ UserRouter.post("/", UserController.createUser);
  *           schema:
  *             type: object
  *             properties:
- *               FullName:
+ *               fullName:
  *                 type: string
- *               Email:
+ *               email:
  *                 type: string
- *               Password:
+ *               password:
  *                 type: string
  *     responses:
  *       200:
@@ -66,9 +66,9 @@ UserRouter.post("/login", UserController.login);
  *           schema:
  *             type: object
  *             properties:
- *               Email:
+ *               email:
  *                 type: string
- *               Password:
+ *               password:
  *                 type: string
  *     responses:
  *       200: 
@@ -79,16 +79,16 @@ UserRouter.post("/login", UserController.login);
  *         description: Error orccured. 
  */
 
-UserRouter.put("/updateUser/:UserId", UserController.changeUserDetails);
+UserRouter.put("/updateUser/:userId", UserController.changeUserDetails);
 
 /**
  * @swagger
- * /api/user/updateUser/{UserId}:
+ * /api/user/updateUser/{userId}:
  *   put:
  *     description: Update user details given the user ID.
  *     parameters:
  *       - in: path
- *         name: UserId
+ *         name: userId
  *         required: true
  *         schema:
  *           type: string
@@ -99,11 +99,11 @@ UserRouter.put("/updateUser/:UserId", UserController.changeUserDetails);
  *           schema: 
  *             type: object
  *             properties:
- *               FullName:
+ *               fullName:
  *                 type: string
- *               Email:
+ *               email:
  *                 type: string
- *               Password: 
+ *               password: 
  *                 type: string
  *     responses:
  *       200:
@@ -112,4 +112,4 @@ UserRouter.put("/updateUser/:UserId", UserController.changeUserDetails);
  *         description: An error occured.
  */
 
-export default UserRouter;
+module.exports = UserRouter;

@@ -33,9 +33,9 @@ export const SignUp = () => {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
-                FullName: name,
-                Email: email,
-                Password: password
+                fullName: name,
+                email: email,
+                password: password
             })
         })
 
