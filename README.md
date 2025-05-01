@@ -10,7 +10,9 @@ Steps:
   <ul>
     <li>Open config.json file on path: src/To-Do-List-Forum-Week8/backend/config/</li>
     <li>Modify the following information according to your own SQL database.</li>
+    <br>
     <img src="./public/config.png">
+    <br>
   </ul>
   <li>Run "npm run dev" on the root folder and "npm run server" on the backend folder</li>
 </ul>
