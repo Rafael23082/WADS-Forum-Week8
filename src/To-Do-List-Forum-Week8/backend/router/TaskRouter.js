@@ -20,7 +20,7 @@ TaskRouter.post("/", TaskController.createTask);
 
 /**
  * @swagger
- * /api/task/:
+ * /api/task:
  *  post:
  *      summary: Create a task.
  *      requestBody:

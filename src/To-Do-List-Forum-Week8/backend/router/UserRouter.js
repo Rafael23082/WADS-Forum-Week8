@@ -29,7 +29,7 @@ UserRouter.post("/", UserController.createUser);
 
 /**
  * @swagger
- * /api/user/:
+ * /api/user:
  *   post:
  *     description: Creates a user
  *     requestBody:
