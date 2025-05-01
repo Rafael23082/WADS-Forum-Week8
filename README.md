@@ -8,7 +8,8 @@ Steps:
   <li>npm install **Note:** On backend folder</li>
   <li>mySQL configurations:</li>
   <ul>
-    <li>Open</li>
+    <li>Open config.json file on path: src/To-Do-List-Forum-Week8/backend/config/</li>
+    <li>Modify the following information according to your own SQL database.</li>
   </ul>
   <li>Run "npm run dev" on the root folder and "npm run server" on the backend folder</li>
 </ul>
