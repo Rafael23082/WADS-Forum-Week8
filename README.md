@@ -1,6 +1,6 @@
 API Design:
 <br>
-<img src="./public/API_DESIGN.png">
+<img src="./public/API_DESIGN.png" alt="API Design">
 
 Steps:
 <ol>
@@ -13,7 +13,7 @@ Steps:
   <ul>
     <li>Open config.json file on path: src/To-Do-List-Forum-Week8/backend/config/</li>
     <li>Modify the following information according to your own SQL database.</li>
-    <img src="./public/config.png">
+    <img src="./public/config.png" alt="Configuration">
     <br></br>
   </ul>
   <li>Run "npm run dev" on the root folder and "npm run server" on the backend folder</li>
