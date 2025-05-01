@@ -10,7 +10,6 @@ Steps:
   <ul>
     <li>Open config.json file on path: src/To-Do-List-Forum-Week8/backend/config/</li>
     <li>Modify the following information according to your own SQL database.</li>
-    <br></br>
     <img src="./public/config.png">
     <br></br>
   </ul>
