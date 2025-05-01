@@ -1,5 +1,8 @@
-Steps:
+API Design:
+<br>
+<img src="./public/API_DESIGN.png">
 
+Steps:
 <ol>
   <li>Clone the github repository</li>
   <li>Open Folder</li>
