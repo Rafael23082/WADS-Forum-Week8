@@ -17,6 +17,6 @@ Steps:
     <br></br>
   </ul>
   <li>Make sure that the cors origin in the server.js file is where the frontend is running</li>
-  <img src="cors.png" alt="cors config">
+  <img src="./public/cors.png" alt="cors config">
   <li>Run "npm run dev" on the root folder and "npm run server" on the backend folder</li>
 </ul>
